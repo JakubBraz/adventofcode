@@ -35,14 +35,6 @@ def solve(arg, node_filter):
     return len(result)
 
 
-def part1(arg):
-    return solve(arg, filter_nodes)
-
-
-def part2(arg):
-    return solve(arg, lambda x, y, z: True)
-
-
 def parse_input(arg):
     arg = arg.strip()
     arg = arg.split('\n')
@@ -59,5 +51,5 @@ day_input = parse_input(inp08.raw_input)
 # day_input = parse_input(inp08.test_input)
 
 
-print(part1(day_input))
-print(part2(day_input))
+print(solve(day_input, filter_nodes))
+print(solve(day_input, lambda x, y, z: True))
