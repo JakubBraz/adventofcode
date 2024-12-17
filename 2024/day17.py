@@ -21,7 +21,7 @@ def instruction(a, b, c, program, pointer, output):
     elif op == 1:
         b = b ^ o
     elif op == 2:
-        b = combo(o, a, b, c) % 8
+        b = combo(o, a, b, c) & 7
     elif op == 3:
         if a != 0:
             pointer = o
@@ -30,7 +30,7 @@ def instruction(a, b, c, program, pointer, output):
     elif op == 4:
         b = b ^ c
     elif op == 5:
-        output.append(combo(o, a, b, c) % 8)
+        output.append(combo(o, a, b, c) & 7)
     elif op == 6:
         b = a // (1 << (combo(o, a, b, c)))
     elif op == 7:
@@ -52,11 +52,6 @@ def part1(arg):
     return ','.join(str(c) for c in result)
 
 
-def helper(a):
-    x = (a % 8) ^ 1
-    return (x ^ 5 ^ ( a // (1 << x) )) % 8
-
-
 def digit_range(x):
     return x * 8, x * 8 + 8
 
@@ -64,17 +59,13 @@ def digit_range(x):
 def solve(level, check_from, check_to, digits, tmp):
     if level == len(digits):
         return tmp
-    result = []
-    for i in range(check_from, check_to):
-        if helper(i) == digits[level]:
-            result.append(i)
-    if not result:
-        return -1
-    for num in result:
+    candidates = [i for i in range(check_from, check_to) if calculate(i, 0, 0, digits[::-1])[0] == digits[level]]
+    for num in candidates:
         new_check = digit_range(num)
         res = solve(level + 1, new_check[0], new_check[1], digits, num)
         if res != -1:
             return res
+    return -1
 
 
 def part2(arg):
