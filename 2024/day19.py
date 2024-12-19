@@ -1,7 +1,7 @@
 from inputs import inp19
 
 
-def count(design: str, patterns, memo):
+def count(design, patterns, memo):
     if design in memo:
         return memo[design]
     if not design:
@@ -22,13 +22,9 @@ def part2(arg, memo):
 
 
 def parse_input(arg):
-    arg = arg.strip()
-    arg = arg.split('\n\n')
-    patterns = arg[0]
-    arg = arg[1]
-    patterns = patterns.split(', ')
-    arg = arg.split('\n')
-    return set(patterns), arg
+    arg = arg.strip().split('\n\n')
+    patterns, arg = arg
+    return set(patterns.split(', ')), arg.split('\n')
 
 
 day_input = parse_input(inp19.raw_input)
