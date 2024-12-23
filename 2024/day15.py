@@ -114,5 +114,4 @@ def main():
     print(solve(x, y, grid, moves))
 
 
-if __name__ == '__main__':
-    main()
+main()
