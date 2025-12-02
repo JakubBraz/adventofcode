@@ -15,7 +15,7 @@ def is_valid(x, all_values):
     x = str(x)
     l = len(x) // 2
     for i in range(1, l + 1) if all_values else range(math.ceil(len(x) / 2.0), l + 1):
-        if x.count(x[:i]) * i == len(x) == len(x):
+        if x.count(x[:i]) * i == len(x):
             return False
     return True
 
