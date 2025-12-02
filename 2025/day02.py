@@ -14,9 +14,8 @@ def parse_input(inp):
 def is_valid(x, all_values):
     x = str(x)
     l = len(x) // 2
-    r = range(1, l + 1) if all_values else range(math.ceil(len(x) / 2.0), l + 1)
-    for i in r:
-        if len(x) % i == 0 and x.count(x[:i]) * i == len(x) == len(x):
+    for i in range(1, l + 1) if all_values else range(math.ceil(len(x) / 2.0), l + 1):
+        if x.count(x[:i]) * i == len(x) == len(x):
             return False
     return True
 
