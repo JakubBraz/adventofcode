@@ -6,10 +6,12 @@ My result:
 from inputs import inp02
 import math
 
+
 def parse_input(inp):
     inp = inp.split(",")
     inp = [(int(x[0]), int(x[1])) for x in [z.split("-") for z in inp]]
     return inp
+
 
 def is_valid(x, all_values):
     x = str(x)
@@ -19,6 +21,7 @@ def is_valid(x, all_values):
             return False
     return True
 
+
 def solve(inp, all_values):
     result = 0
     for a, b in inp:
@@ -26,6 +29,7 @@ def solve(inp, all_values):
             if not is_valid(x, all_values):
                 result += x
     return result
+
 
 print(solve(parse_input(inp02.raw_input), False))
 print(solve(parse_input(inp02.raw_input), True))
