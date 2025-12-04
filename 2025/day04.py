@@ -25,11 +25,11 @@ def all_indices(inp):
     return indices
 
 
-def solve(inp):
+def part1(inp):
     return len(all_indices(inp))
 
 
-def solve2(inp):
+def part2(inp):
     result = 0
     removed = True
     while removed:
@@ -42,5 +42,5 @@ def solve2(inp):
     return result
 
 
-print(solve(parse_input(inp04.raw_input)))
-print(solve2(parse_input(inp04.raw_input)))
+print(part1(parse_input(inp04.raw_input)))
+print(part2(parse_input(inp04.raw_input)))
